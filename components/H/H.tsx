@@ -1,7 +1,7 @@
-import { IHProps } from './H.props';
+import { HProps } from './H.props';
 import styles from './H.module.css';
 
-export const H = ({ tag, children, ...props }: IHProps): JSX.Element => {
+export const H = ({ tag, children, ...props }: HProps): JSX.Element => {
   switch (tag) {
     case 'h1':
       return <h1 className={styles.h1} {...props}>{children}</h1>;

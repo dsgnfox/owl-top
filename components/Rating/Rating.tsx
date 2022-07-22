@@ -1,10 +1,10 @@
 import cn from 'classnames';
-import { IRating } from './Rating.props';
+import { RatingProps } from './Rating.props';
 import styles from './Rating.module.css';
 import StarIcon from './star.svg';
 import { Fragment, useEffect, useState, KeyboardEvent } from 'react';
 
-export const Rating = ({ isEditable, rating, setRating, ...props }: IRating): JSX.Element => {
+export const Rating = ({ isEditable, rating, setRating, ...props }: RatingProps): JSX.Element => {
   const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
 
   useEffect(() => {

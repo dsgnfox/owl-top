@@ -1,8 +1,8 @@
 import cn from 'classnames';
-import { ITag } from './Tag.props';
+import { TagProps } from './Tag.props';
 import styles from './Tag.module.css';
 
-export const Tag = ({ size = 'm', children, color = 'ghost', href, target, className, ...props }: ITag): JSX.Element => {
+export const Tag = ({ size = 'm', children, color = 'ghost', href, target, className, ...props }: TagProps): JSX.Element => {
   return (
     <div className={cn(styles.tag, className, {
       [styles.s]: size === 's',
