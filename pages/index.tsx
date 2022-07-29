@@ -18,9 +18,6 @@ function Home({ menu }: HomeProps): JSX.Element {
       <P size='l'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora perspiciatis neque velit earum qui iure voluptates molestias quam omnis aliquam, et eaque. Totam consequatur, quisquam at non possimus eius velit!</P>
       <Tag size='m' color='green' href='http://localhost:3000/' target='_blank'>Tag</Tag>
       <Rating rating={rating} isEditable={true} setRating={setRating} />
-      <ul>
-        {menu.map((m) => <li key={m._id.secondCategory}>{m._id.secondCategory}</li>)}
-      </ul>
     </div>
   );
 }

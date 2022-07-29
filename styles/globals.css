@@ -10,6 +10,10 @@ body {
 	box-sizing: border-box;
 }
 
+a {
+	text-decoration: none;
+}
+
 :root {
 	--black: #3B434E;
 	--white: white;
@@ -19,5 +23,6 @@ body {
 	--green: #1DC37E;
 	--green-light: #C8F8E4;
 	--gray-light: #ebebeb;
+	--gray-dark: #787D85;
 	--font-family: 'Noto Sans', sans-serif;
 }
