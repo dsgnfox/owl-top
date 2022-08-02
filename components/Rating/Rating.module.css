@@ -1,24 +1,24 @@
 .rating {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .rating__item {
-  padding: 0 5px 0 0;
+	padding: 0 5px 0 0;
 }
 
 .star {
-  display: block;
+	display: block;
 }
 
 .star:last-child {
-  padding: 0;
+	padding: 0;
 }
 
 .filled {
-  fill: var(--primary);
+	fill: var(--primary);
 }
 
 .editable {
-  cursor: pointer;
+	cursor: pointer;
 }
