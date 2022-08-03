@@ -2,7 +2,7 @@
 	display: grid;
 	grid-template-columns: [start] 70px [logoend] 30px [titlestart] calc(50% - 100px) [middle] 1fr [pricestart] auto [priceend] 40px [creditstart] auto [creditend] 40px [ratingstart] auto [end];
 
-	margin: 0 0 30px;
+	margin-top: 30px;
 	padding: 30px;
 }
 
@@ -151,6 +151,17 @@
 	border-bottom: 1px dashed var(--gray-light);
 }
 
+.closed {
+	overflow: hidden;
+
+	max-height: 0;
+}
+
+.opened {
+	max-height: auto;
+	padding: 30px;
+}
+
 @media screen and (max-width: 1320px) {
 	.product {
 		grid-template-columns: 70px 30px auto 40px auto 40px 1fr;
@@ -272,6 +283,10 @@
 
 	.rating {
 		margin-bottom: 10px;
+	}
+
+	.opened {
+		padding: 15px;
 	}
 }
 

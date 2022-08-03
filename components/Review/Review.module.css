@@ -1,0 +1,51 @@
+.review {
+	display: grid;
+	grid-template-columns: [start] auto 1fr auto auto [end];
+
+	align-self: center;
+	gap: 10px;
+
+	font-size: 14px;
+	line-height: 24px;
+}
+
+.description {
+	grid-column: start / end;
+}
+
+.date {
+	margin-right: 10px;
+}
+
+.name {
+	margin-right: 5px;
+
+	font-weight: bold;
+}
+
+@media (max-width: 890px) {
+	.review {
+		grid-template-columns: [start] 30px [titlestart] auto [dateend] 1fr [end];
+	}
+
+	.title {
+		grid-column: titlestart / end;
+	}
+
+	.date {
+		grid-column: start / dateend;
+	}
+}
+
+@media (max-width: 480px) {
+	.user {
+		grid-column: start / titlestart;
+		grid-row: 1 / span 2;
+	}
+
+	.title > span {
+		display: block;
+
+		width: 100%;
+	}
+}
