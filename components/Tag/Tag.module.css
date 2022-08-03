@@ -9,10 +9,6 @@
 	border-radius: 20px;
 }
 
-.tag:last-child {
-	margin: 0;
-}
-
 .tag a {
 	cursor: pointer;
 	text-decoration: none;

@@ -1,5 +1,6 @@
 .search {
 	position: relative;
+
 	width: 100%;
 }
 
@@ -10,9 +11,11 @@
 .button {
 	position: absolute;
 	top: 50%;
-	transform: translateY(-50%);
 	right: 3px;
+
 	width: 30px;
 	height: 30px;
 	padding: 7px;
+
+	transform: translateY(-50%);
 }

@@ -1,6 +1,6 @@
 import {TopPageComponentProps} from "./TopPageComponent.props";
 import styles from './TopPageComponent.module.css';
-import {Advantages, H, HhData, Sort, Tag} from '../../components'
+import {Advantages, H, HhData, Product, Sort, Tag} from '../../components'
 import {TopLevelCategory} from "../../interfaces/page.interface";
 import {SortEnum} from "../../components/Sort/Sort.props";
 import {useReducer} from "react";
@@ -20,7 +20,7 @@ export const TopPageComponent = ({page, products, firstCategory}: TopPageCompone
                 {products && <Tag color='gray' size='m'>{products.length}</Tag>}
                 <Sort sort={sort} setSort={setSort}/>
             </div>
-            <div>{sortedProducts && sortedProducts.map((product) => <div key={product._id}>{product.title}</div>)}</div>
+            <div>{sortedProducts && sortedProducts.map((product) => <Product key={product._id} product={product}/>)}</div>
             <div className={styles.hhTitle}>
                 <H tag='h2'>Вакансии - {page.category}</H>
                 <Tag color='red' size='m'>hh.ru</Tag>
