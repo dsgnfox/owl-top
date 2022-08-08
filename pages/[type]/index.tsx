@@ -6,7 +6,7 @@ import { firstLevelMenu } from '../../helpers/helpers';
 import { ParsedUrlQuery } from 'node:querystring';
 import {API} from "../../helpers/api";
 
-function Type({ firstCategory }: TypeProps): JSX.Element {
+function Type({ menu, firstCategory }: TypeProps): JSX.Element {
 
   return (
     <div>
