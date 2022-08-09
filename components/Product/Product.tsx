@@ -20,11 +20,13 @@ export const Product = motion(forwardRef(({product, className, ...props}: Produc
     const variants = {
         visible: {
             opacity: 1,
-            height: 'auto'
+            height: 'auto',
+            overflow: 'visible'
         },
         hidden: {
             opacity: 0,
-            height: 0
+            height: 0,
+            overflow: 'hidden'
         }
     };
 
@@ -34,6 +36,7 @@ export const Product = motion(forwardRef(({product, className, ...props}: Produc
             behavior: 'smooth',
             block: 'start'
         });
+        reviewRef.current?.focus();
     };
 
     return (
@@ -48,22 +51,27 @@ export const Product = motion(forwardRef(({product, className, ...props}: Produc
                 </div>
                 <div className={styles.title}>{product.title}</div>
                 <div className={styles.price}>
+                    <span className="visuallyHidden">Цена</span>
                     {priceRu(product.price)}
                     {product.oldPrice
-                        && <Tag className={styles.oldPrice}
-                                color='green'>{priceRu(product.price - product.oldPrice)}</Tag>}
+                        && <Tag className={styles.oldPrice} color='green'>
+                            <span className="visuallyHidden">Скидка</span>
+                            {priceRu(product.price - product.oldPrice)}
+                    </Tag>}
                 </div>
                 <div className={styles.credit}>
+                    <span className="visuallyHidden">Кредит</span>
                     {priceRu(product.credit)} / <span className={styles.month}>мес</span>
                 </div>
                 <div className={styles.rating}>
+                    <span className="visuallyHidden">{`Рейтинг ` + (product.reviewAvg ?? product.initialRating)}</span>
                     <Rating rating={product.reviewAvg ?? product.initialRating}/>
                 </div>
                 <div className={styles.tags}>
                     {product.categories.map((c) => <Tag key={c} color='ghost' className={styles.category}>{c}</Tag>)}
                 </div>
-                <div className={styles.priceTitle}>цена</div>
-                <div className={styles.creditTitle}>кредит</div>
+                <div className={styles.priceTitle} aria-hidden={true}>цена</div>
+                <div className={styles.creditTitle} aria-hidden={true}>кредит</div>
                 <div className={styles.ratingTitle}>
                     <a href="#ref" onClick={scrollToReview}>{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}</a>
                 </div>
@@ -96,6 +104,7 @@ export const Product = motion(forwardRef(({product, className, ...props}: Produc
                         arrow={isReviewOpened ? 'down' : 'right'}
                         className={styles.reviewButton}
                         onClick={() => setIsPreviewOpened(!isReviewOpened)}
+                        aria-expanded={isReviewOpened}
                     >Читать отзывы</Button>
                 </div>
             </Card>
@@ -104,17 +113,18 @@ export const Product = motion(forwardRef(({product, className, ...props}: Produc
                 initial={isReviewOpened ? 'visible' : 'hidden'}
                 animate={isReviewOpened ? 'visible' : 'hidden'}
             >
-                <Card color='blue' className={cn(styles.reviews, {
+                <Card color='blue' ref={reviewRef} className={cn(styles.reviews, {
                     [styles.opened]: isReviewOpened,
                     [styles.closed]: !isReviewOpened
-                })} ref={reviewRef}>
+                })}
+                    tabIndex={isReviewOpened ? 0 : -1}>
                     {product.reviews.map((review) => (
                         <Fragment key={review._id}>
                             <Review review={review}/>
                             <Divider/>
                         </Fragment>
                     ))}
-                    <ReviewForm productId={product._id}/>
+                    <ReviewForm productId={product._id} isOpened={isReviewOpened}/>
                 </Card>
             </motion.div>
         </div>

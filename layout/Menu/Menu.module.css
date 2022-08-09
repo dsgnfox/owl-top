@@ -4,13 +4,19 @@
 
 	margin: 0 0 20px;
 
-	color: #787D85;
+	color: #6C7077;
 
 	font-size: 18px;
 	font-weight: 500;
 	line-height: 25px;
 	grid-template-columns: 24px 1fr;
 	gap: 20px;
+}
+
+.firstLevelList {
+	padding: 0;
+
+	list-style: none;
 }
 
 .firstLevelActive,
@@ -25,30 +31,36 @@
 
 .secondLevel {
 	margin: 0 0 10px;
+	padding: 0;
 
 	cursor: pointer;
 	text-transform: uppercase;
 
 	color: var(--gray-dark);
+	border: none;
+	outline-offset: -1px;
+	background: none;
 
 	font-size: 12px;
 	font-weight: 300;
 	line-height: 16px;
 }
 
-.secondLevel:last-child {
-	margin: 0;
-}
-
 .secondBlock {
 	margin: 15px 0 20px 12px;
 	padding: 0 0 0 32px;
+
+	list-style: none;
 
 	border-left: 1px solid #DFDFDF;
 }
 
 .secondLevelBlock {
 	overflow: hidden;
+
+	padding: 0;
+
+	list-style: none;
 }
 
 .thirdLevel {
@@ -59,10 +71,10 @@
 	cursor: pointer;
 
 	color: var(--gray-dark);
+	outline-offset: -1px;
 
 	font-size: 14px;
 	font-weight: 500;
-	line-height: 19px;
 }
 
 .thirdLevel:last-child {

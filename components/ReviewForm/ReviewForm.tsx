@@ -12,8 +12,8 @@ import axios from "axios";
 import {API} from "../../helpers/api";
 import {useState} from "react";
 
-export const ReviewForm = ({productId, className, ...props}: ReviewFormProps): JSX.Element => {
-    const {register, control, handleSubmit, formState: {errors}, reset} = useForm<IReviewForm>();
+export const ReviewForm = ({productId, isOpened, className, ...props}: ReviewFormProps): JSX.Element => {
+    const {register, control, handleSubmit, formState: {errors}, reset, clearErrors} = useForm<IReviewForm>();
     const [isSuccess, setIsSuccess] = useState<boolean>(false);
     const [isError, setIsError] = useState<boolean>(false);
 
@@ -37,12 +37,16 @@ export const ReviewForm = ({productId, className, ...props}: ReviewFormProps): J
                 <Input
                     {...register('name', {required: {value: true, message: 'Заполните имя'}})}
                     placeholder='Имя'
-                    error={errors.name}/>
+                    error={errors.name}
+                    tabIndex={isOpened ? 0 : -1}
+                    aria-invalid={!!errors.name}/>
                 <Input
                     {...register('title', {required: {value: true, message: 'Заполните заголовок'}})}
                     placeholder='Заголовок отзыва'
                     className={styles.title}
-                    error={errors.title}/>
+                    error={errors.title}
+                    tabIndex={isOpened ? 0 : -1}
+                    aria-invalid={!!errors.title}/>
                 <div className={styles.rating}>
                     <span>Оценка:</span>
                     <Controller
@@ -55,6 +59,7 @@ export const ReviewForm = ({productId, className, ...props}: ReviewFormProps): J
                                 rating={field.value}
                                 ref={field.ref}
                                 setRating={field.onChange}
+                                tabIndex={isOpened ? 0 : -1}
                                 error={errors.rating}/>
                         )}
                     />
@@ -63,23 +68,37 @@ export const ReviewForm = ({productId, className, ...props}: ReviewFormProps): J
                     {...register('description', {required: {value: true, message: 'Заполните текст отзыва'}})}
                     placeholder='Текст отзыва'
                     className={styles.description}
-                    error={errors.description}/>
+                    error={errors.description}
+                    tabIndex={isOpened ? 0 : -1}
+                    aria-label='Текст отзыва'
+                    aria-invalid={!!errors.description}/>
                 <div className={styles.submit}>
-                    <Button apperance='primary'>Отправить</Button>
+                    <Button apperance='primary' tabIndex={isOpened ? 0 : -1}
+                            onClick={() => clearErrors()}>Отправить</Button>
                     <span className={styles.info}>
                         * Перед публикацией отзыв пройдет предварительную модерацию и проверку
                     </span>
                 </div>
             </div>
-            {isSuccess && <div className={cn(styles.panel, styles.success)}>
+            {isSuccess && <div className={cn(styles.panel, styles.success)} role='alert'>
                 <div className={styles.successTitle}>Ваш отзыв отправлен</div>
                 <div>Спасибо, ваш отзыв будет опубликован после проверки.</div>
-                <CloseIcon onClick={() => setIsSuccess(false)} className={styles.close}/>
+                <button
+                    onClick={() => setIsSuccess(false)}
+                    className={styles.close}
+                    aria-label='Закрыть оповещение'>
+                    <CloseIcon/>
+                </button>
             </div>}
-            {isError && <div className={cn(styles.panel, styles.error)}>
+            {isError && <div className={cn(styles.panel, styles.error)} role='alert'>
                 <div className={styles.errorTitle}>Ошибка отправки</div>
                 <div>Что-то пошло не так, попробуйте обновить страницу</div>
-                <CloseIcon onClick={() => setIsError(false)} className={styles.close}/>
+                <button
+                    onClick={() => setIsError(false)}
+                    className={styles.close}
+                    aria-label='Закрыть оповещение'>
+                    <CloseIcon/>
+                </button>
             </div>}
         </form>
     );

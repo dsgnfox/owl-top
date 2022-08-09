@@ -17,17 +17,27 @@ a {
 	text-decoration: none;
 }
 
+.visuallyHidden {
+	position: absolute;
+
+	overflow: hidden;
+
+	width: 0;
+	height: 0;
+}
+
 :root {
 	--black: #3B434E;
 	--white: white;
-	--primary: #7653FC;
+	--primary: #7351F5;
 	--primary-hover: #4623D1;
 	--red: #DE0000;
 	--red-light: #FC836D;
-	--green: #1DC37E;
-	--green-light: #C8F8E4;
+	--green: #007B48;
+	--green-light: #C2F2DE;
+	--green-dark: #00492B;
 	--gray: #A4A4A4;
 	--gray-light: #EBEBEB;
-	--gray-dark: #787D85;
+	--gray-dark: #6C7077;
 	--font-family: "Noto Sans", sans-serif;
 }

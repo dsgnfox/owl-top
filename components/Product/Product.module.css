@@ -105,8 +105,6 @@
 }
 
 .reviews {
-	overflow: hidden;
-
 	padding: 30px;
 }
 
@@ -124,7 +122,7 @@
 	margin-bottom: 20px;
 	padding-left: 15px;
 
-	border-left: 2px solid var(--green);
+	border-left: 2px solid #1DC37E;
 }
 
 .disadvantages {

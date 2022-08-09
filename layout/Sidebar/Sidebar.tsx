@@ -10,7 +10,7 @@ export const Sidebar = ({ className, ...props }: SidebarProps): JSX.Element => {
   return (
     <div className={cn(className, styles.sidebar)} {...props}>
         <Link href='/'>
-            <a>
+            <a aria-label='Перейти на главную страницу'>
                 <Logo className={styles.logo}/>
             </a>
         </Link>
