@@ -13,8 +13,8 @@ function Home({menu}: HomeProps): JSX.Element {
     return (
         <div>
             <H tag='h1' title='123123'>Hello!</H>
-            <Button apperance='primary'>button</Button>
-            <Button apperance='ghost' arrow='down'>button with arrow</Button>
+            <Button appearance='primary'>button</Button>
+            <Button appearance='ghost' arrow='down'>button with arrow</Button>
             <P size='s'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora perspiciatis neque velit earum
                 qui iure voluptates molestias quam omnis aliquam, et eaque. Totam consequatur, quisquam at non possimus
                 eius velit!</P>

@@ -98,9 +98,9 @@ export const Product = motion(forwardRef(({product, className, ...props}: Produc
                 </div>
                 <Divider className={cn(styles.hr, styles.hr2)}/>
                 <div className={styles.actions}>
-                    <Button apperance='primary'>Узнать подробнее</Button>
+                    <Button appearance='primary'>Узнать подробнее</Button>
                     <Button
-                        apperance='ghost'
+                        appearance='ghost'
                         arrow={isReviewOpened ? 'down' : 'right'}
                         className={styles.reviewButton}
                         onClick={() => setIsPreviewOpened(!isReviewOpened)}

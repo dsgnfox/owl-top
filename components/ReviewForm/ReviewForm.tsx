@@ -73,7 +73,7 @@ export const ReviewForm = ({productId, isOpened, className, ...props}: ReviewFor
                     aria-label='Текст отзыва'
                     aria-invalid={!!errors.description}/>
                 <div className={styles.submit}>
-                    <Button apperance='primary' tabIndex={isOpened ? 0 : -1}
+                    <Button appearance='primary' tabIndex={isOpened ? 0 : -1}
                             onClick={() => clearErrors()}>Отправить</Button>
                     <span className={styles.info}>
                         * Перед публикацией отзыв пройдет предварительную модерацию и проверку
