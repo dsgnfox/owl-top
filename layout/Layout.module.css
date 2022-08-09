@@ -21,14 +21,12 @@
 
 .main {
 	grid-area: main;
+
+	outline: none;
 }
 
 .footer {
 	grid-area: footer;
-}
-
-.main {
-	outline: none;
 }
 
 .skipLink {

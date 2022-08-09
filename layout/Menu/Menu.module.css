@@ -41,6 +41,8 @@
 	outline-offset: -1px;
 	background: none;
 
+	font-family: var(--font-family);
+
 	font-size: 12px;
 	font-weight: 300;
 	line-height: 16px;
@@ -75,10 +77,6 @@
 
 	font-size: 14px;
 	font-weight: 500;
-}
-
-.thirdLevel:last-child {
-	margin: 0;
 }
 
 .thirdLevelActive,

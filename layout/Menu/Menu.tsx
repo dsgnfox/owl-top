@@ -16,13 +16,15 @@ export const Menu = (): JSX.Element => {
 
     const variants = {
         visible: {
-            marginBottom: 20,
+            height: 'auto',
+            marginBottom: '20px',
             transition: shouldReduceMotion ? {} : {
                 when: 'beforeChildren',
-                staggerChildren: 0.1
+                staggerChildren: 0.05
             }
         },
         hidden: {
+            height: 0,
             marginBottom: 0
         }
     };
@@ -30,11 +32,11 @@ export const Menu = (): JSX.Element => {
     const variantsChildren = {
         visible: {
             opacity: 1,
-            height: 29
+            x: 0
         },
         hidden: {
-            opacity: shouldReduceMotion ? 1 : 0,
-            height: 0
+            opacity: shouldReduceMotion ? 1 : 0 ,
+            x: '100%'
         }
     };
 
