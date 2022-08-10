@@ -1,0 +1,42 @@
+.rating {
+	display: flex;
+	align-items: center;
+}
+
+.rating__item {
+	margin: 0 5px 0 0;
+}
+
+.rating__item:last-child {
+	margin: 0;
+}
+
+.star {
+	display: block;
+}
+
+.filled {
+	fill: var(--primary);
+	stroke: none !important;
+}
+
+.editable {
+	cursor: pointer;
+}
+
+.ratingWrapper {
+	position: relative;
+}
+
+.error svg {
+	stroke: var(--red);
+	stroke-width: 0.5;
+}
+
+.errorMessage {
+	position: absolute;
+	bottom: -20px;
+	left: 0;
+
+	color: var(--red);
+}
