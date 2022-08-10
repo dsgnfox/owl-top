@@ -6,7 +6,7 @@ export interface ProductCharacteristic {
 export interface Blog {
   text: string;
   _id: string;
-  bigImage: string;
+  bigImage?: string;
 }
 
 export interface ReviewModel {
