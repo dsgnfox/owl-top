@@ -4,14 +4,14 @@ import styles from './Rating.module.css';
 import StarIcon from './star.svg';
 import {Fragment, useEffect, useState, KeyboardEvent, forwardRef, ForwardedRef, useRef} from 'react';
 
-export const Rating = forwardRef(({
-                                      isEditable,
-                                      rating,
-                                      setRating,
-                                      error,
-                                      tabIndex,
-                                      ...props
-                                  }: RatingProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
+const Rating = forwardRef(({
+                               isEditable,
+                               rating,
+                               setRating,
+                               error,
+                               tabIndex,
+                               ...props
+                           }: RatingProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
     const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
     const ratingArrayRef = useRef<(HTMLSpanElement | null)[]>([]);
 
@@ -87,7 +87,7 @@ export const Rating = forwardRef(({
     };
 
     return (
-        <div {...props} className={styles.ratingWrapper}>
+        <div {...props} ref={ref} className={styles.ratingWrapper}>
             <div className={cn(styles.rating, {
                 [styles.error]: error
             })}>
@@ -97,3 +97,7 @@ export const Rating = forwardRef(({
         </div>
     );
 });
+
+Rating.displayName = 'Rating';
+
+export {Rating};

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { MenuItem } from '../interfaces/menu.interface';
 import {API} from "../helpers/api";
 
-function Search({ menu }: SearchProps): JSX.Element {
+function Search(): JSX.Element {
 
   return (
     <div>

@@ -13,7 +13,7 @@ import {Review} from "../Review/Review";
 import {ReviewForm} from "../ReviewForm/ReviewForm";
 import {motion} from 'framer-motion';
 
-export const Product = motion(forwardRef(({product, className, ...props}: ProductProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
+export const Product = motion(forwardRef(function Product({product, className, ...props}: ProductProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element {
     const [isReviewOpened, setIsPreviewOpened] = useState<boolean>(false);
     const reviewRef = useRef<HTMLDivElement>(null);
 
@@ -57,7 +57,7 @@ export const Product = motion(forwardRef(({product, className, ...props}: Produc
                         && <Tag className={styles.oldPrice} color='green'>
                             <span className="visuallyHidden">Скидка</span>
                             {priceRu(product.price - product.oldPrice)}
-                    </Tag>}
+                        </Tag>}
                 </div>
                 <div className={styles.credit}>
                     <span className="visuallyHidden">Кредит</span>
@@ -117,7 +117,7 @@ export const Product = motion(forwardRef(({product, className, ...props}: Produc
                     [styles.opened]: isReviewOpened,
                     [styles.closed]: !isReviewOpened
                 })}
-                    tabIndex={isReviewOpened ? 0 : -1}>
+                      tabIndex={isReviewOpened ? 0 : -1}>
                     {product.reviews.map((review) => (
                         <Fragment key={review._id}>
                             <Review review={review}/>

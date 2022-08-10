@@ -29,11 +29,14 @@ export const TopPageComponent = ({page, products, firstCategory}: TopPageCompone
         <div className={styles.wrapper}>
             <div className={styles.title}>
                 <H tag='h1'>{page.title}</H>
-                {products && <Tag color='gray'
-                                  size='m'
-                                  aria-label={products.length + ' ' + declOfNum(products.length, ['элемент', 'элемента', 'элементов'])}>
-                    {products.length}
-                </Tag>}
+                {products &&
+                    <Tag color='gray'
+                         size='m'
+                         aria-label={products.length + ' ' + declOfNum(products.length, ['элемент', 'элемента', 'элементов'])}
+                    >
+                        {products.length}
+                    </Tag>
+                }
                 <Sort sort={sort} setSort={setSort}/>
             </div>
             <div role='list'>
