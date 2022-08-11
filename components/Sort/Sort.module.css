@@ -11,6 +11,8 @@
 
 	cursor: pointer;
 
+	white-space: nowrap;
+
 	border: none;
 	background: transparent;
 

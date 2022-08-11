@@ -13,6 +13,7 @@
     "stylelint": "stylelint \"**/*.css\" --fix"
   },
   "dependencies": {
+    "@badrap/bar-of-progress": "^0.2.1",
     "axios": "^0.27.2",
     "date-fns": "^2.29.1",
     "framer-motion": "^6.5.1",

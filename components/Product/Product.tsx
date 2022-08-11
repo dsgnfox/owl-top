@@ -98,7 +98,7 @@ export const Product = motion(forwardRef(function Product({product, className, .
                 </div>
                 <Divider className={cn(styles.hr, styles.hr2)}/>
                 <div className={styles.actions}>
-                    <a href={product.link} target="_blank" rel="noreferrer">
+                    <a className={styles.productLink} href={product.link} target="_blank" rel="noreferrer">
                         <Button appearance='primary'>Узнать подробнее</Button>
                     </a>
                     <Button
@@ -106,15 +106,15 @@ export const Product = motion(forwardRef(function Product({product, className, .
                         arrow={isReviewOpened ? 'down' : 'right'}
                         className={styles.reviewButton}
                         onClick={() => setIsPreviewOpened(!isReviewOpened)}
-                        aria-expanded={isReviewOpened}
-                    >Читать отзывы</Button>
+                        aria-expanded={isReviewOpened}>
+                        Читать отзывы
+                    </Button>
                 </div>
             </Card>
             <motion.div
                 variants={variants}
                 initial={isReviewOpened ? 'visible' : 'hidden'}
-                animate={isReviewOpened ? 'visible' : 'hidden'}
-            >
+                animate={isReviewOpened ? 'visible' : 'hidden'}>
                 <Card color='blue' ref={reviewRef} className={cn(styles.reviews, {
                     [styles.opened]: isReviewOpened,
                     [styles.closed]: !isReviewOpened

@@ -42,13 +42,19 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
     }
 
     const rawData = fs.readFileSync('./fake_data/mainProduct.json');
-    const data = JSON.parse(rawData.toString());
+    const {products} = JSON.parse(rawData.toString());
+
+    if (products.length === 0) {
+        return {
+            notFound: true
+        };
+    }
 
     return {
         props: {
             menu,
             firstCategory,
-            products: data.products
+            products
         }
     };
 };

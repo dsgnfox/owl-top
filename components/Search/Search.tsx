@@ -33,13 +33,13 @@ export const Search = ({className, ...props}: SearchProps): JSX.Element => {
                 placeholder='Поиск...'
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                onKeyDown={handleKeyDown}
+                onKeyDown={() => handleKeyDown}
                 type='search'
             />
             <Button
                 appearance='primary'
                 className={styles.button}
-                onClick={goToSearch}
+                onClick={() => goToSearch()}
                 aria-label='Искать по сайту'>
                 <GlassIcon/>
             </Button>
