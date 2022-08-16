@@ -20,19 +20,9 @@ env:
 
 # TRIGGERS
 on:
-  # page_build:
-  # schedule: # Check your schedule here => https://crontab.guru/
-  #   - cron: '55 23 * * 0' # e.g. every Sunday at 23:55
-  #
-  # THAT'S IT; YOU'RE DONE;
-  workflow_dispatch:
-    inputs:
-      urls:
-        description: 'URL(s) to be checked'
-        required: true
-      token_name:
-        description: 'Target token name (NO VALUE!)'
-        required: true
+  push:
+    branches:
+      - main
 
 ########################################################################
 # THAT'S IT; YOU DON'T HAVE TO DEFINE ANYTHING IN THE FOLLOWING
