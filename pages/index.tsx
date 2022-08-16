@@ -1,52 +1,64 @@
 import {GetStaticProps} from 'next';
-import {useState} from 'react';
-import {H, Button, P, Tag, Rating, Input, Textarea} from '../components';
+import {Product, H} from '../components';
 import {withLayout} from '../layout/Layout';
 import axios from 'axios';
 import {MenuItem} from '../interfaces/menu.interface';
-import {API} from "../helpers/api";
+import {API} from '../helpers/api';
+import {Error404} from './404';
+import {ProductModel} from '../interfaces/product.interface';
+import fs from 'fs';
 
-function Home(): JSX.Element {
+function Home({products}: HomeProps): JSX.Element {
+  if (!products) {
+    return <Error404 />;
+  }
 
-    const [rating, setRating] = useState<number>(4);
-
-    return (
-        <div>
-            <H tag='h1' title='123123'>Hello!</H>
-            <Button appearance='primary'>button</Button>
-            <Button appearance='ghost' arrow='down'>button with arrow</Button>
-            <P size='s'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora perspiciatis neque velit earum
-                qui iure voluptates molestias quam omnis aliquam, et eaque. Totam consequatur, quisquam at non possimus
-                eius velit!</P>
-            <P size='l'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora perspiciatis neque velit earum
-                qui iure voluptates molestias quam omnis aliquam, et eaque. Totam consequatur, quisquam at non possimus
-                eius velit!</P>
-            <Tag size='m' color='green' href='http://localhost:3000/' target='_blank'>Tag</Tag>
-            <Rating rating={rating} isEditable={true} setRating={setRating}/>
-            <Input placeholder='123'/>
-            <Textarea placeholder='www'/>
-        </div>
-    );
+  return (
+    <>
+      <H tag="h1">Самые популярные курсы</H>
+      <div role="list">
+        {products &&
+          products.map(product => <Product key={product._id} product={product} role="listitem" />)}
+      </div>
+    </>
+  );
 }
 
 export default withLayout(Home);
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-    const firstCategory = 0;
+  const firstCategory = 0;
 
-    const {data: menu} = await axios.post<MenuItem[]>(API.topPage.find, {
-        firstCategory
-    });
+  const {data: menu} = await axios.post<MenuItem[]>(API.topPage.find, {
+    firstCategory,
+  });
 
+  if (menu.length === 0) {
     return {
-        props: {
-            menu,
-            firstCategory
-        }
+      notFound: true,
     };
+  }
+
+  const rawData = fs.readFileSync('./fake_data/mainProduct.json');
+  const {products} = JSON.parse(rawData.toString());
+
+  if (products.length === 0) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      menu,
+      firstCategory,
+      products,
+    },
+  };
 };
 
 interface HomeProps extends Record<string, unknown> {
-    menu: MenuItem[],
-    firstCategory: number
+  menu: MenuItem[];
+  firstCategory: number;
+  products: ProductModel[];
 }

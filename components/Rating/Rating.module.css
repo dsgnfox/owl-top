@@ -4,11 +4,11 @@
 }
 
 .rating__item {
-	margin: 0 5px 0 0;
+	padding: 0 5px 0 0;
 }
 
 .rating__item:last-child {
-	margin: 0;
+	padding: 0;
 }
 
 .star {

@@ -1,0 +1,12 @@
+node_modules
+.pnp
+.pnp.js
+.next
+out
+*.css
+*.json
+*.md
+.eslintrc
+.husky
+.vscode
+.gitignore
