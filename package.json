@@ -10,8 +10,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "stylelint": "stylelint \"**/*.css\" --fix"
+    "stylelint": "stylelint \"**/*.css\" --fix",
+    "format": "prettier --write .",
+    "precommit": "npm run format && npm run stylelint"
   },
+  "prettier": "prettier-airbnb-config",
   "dependencies": {
     "@badrap/bar-of-progress": "^0.2.1",
     "axios": "^0.27.2",
@@ -33,6 +36,8 @@
     "eslint-config-next": "12.2.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.1",
+    "prettier": "2.7.1",
+    "prettier-airbnb-config": "^1.0.0",
     "stylelint": "^14.9.1",
     "stylelint-config-standard": "^26.0.0",
     "stylelint-order": "^5.0.0",
